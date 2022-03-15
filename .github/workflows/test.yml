@@ -1,0 +1,12 @@
+name: Hi
+
+on: push
+
+jobs:
+  hi:
+    runs-on: [self-hosted, linux]
+    steps:
+      - name: say hi
+        run: |
+          date
+          echo hi
