@@ -7,10 +7,11 @@ on:
 jobs:
   thing:
     runs-on: ubuntu-latest
-    matrix:
-      include:
+    strategy:
+      matrix:
+        include:
         - one: 'yes'
           two: 'no'
-   steps:
+    steps:
      - run: |
          echo ${{ matrix.one }} ${{ matrix.two }}
