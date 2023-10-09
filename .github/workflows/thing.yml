@@ -1,0 +1,16 @@
+name: thing
+on:
+  pull_request: {}
+  push:
+    branches:
+      - main
+jobs:
+  thing:
+    runs-on: ubuntu-latest
+    matrix:
+      include:
+        - one: 'yes'
+          two: 'no'
+   steps:
+     - run: |
+         echo ${{ matrix.one }} ${{ matrix.two }}
