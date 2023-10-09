@@ -12,7 +12,7 @@ jobs:
     steps:
      - id: matrix
        run: |
-         echo "matrix=$(jq -rcM -n '.one="yes" | .two = "no" | .three = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" | {"include":[.]}')" >> $GITHUB_OUTPUT
+         echo "matrix=$(jq -rcM -n '.one="yes" | .two = "no" | .three = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" | {"include":[.]}')" >> $GITHUB_OUTPUT
   thing:
     needs: prepare
     runs-on: ubuntu-latest
