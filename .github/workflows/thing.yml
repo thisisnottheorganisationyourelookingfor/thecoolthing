@@ -5,13 +5,19 @@ on:
     branches:
       - main
 jobs:
+  prepare:
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    runs-on: ubuntu-latest
+    steps:
+     - id: matrix
+       run: |
+         echo 'matrix={"include":[{"one":"yes","two":"no"}]' >> $GITHUB_OUTPUT
   thing:
+    needs: prepare
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        include:
-        - one: 'yes'
-          two: 'no'
+      matrix: ${{ needs.prepare.outputs.matrix }}
     steps:
      - run: |
          echo ${{ matrix.one }} ${{ matrix.two }}
