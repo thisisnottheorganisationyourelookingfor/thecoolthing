@@ -1,12 +1,14 @@
 name: Hi
 
 on:
-  push: {}
+  push:
+    branches:
+    - main
   pull_request: {}
 
 jobs:
   hi:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: say hi
         run: |
