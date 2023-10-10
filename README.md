@@ -1,3 +1,3 @@
 # thecoolthing
 
-> it is
+> it is very cool
