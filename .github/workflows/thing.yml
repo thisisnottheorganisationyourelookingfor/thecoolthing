@@ -5,13 +5,19 @@ on:
     branches:
       - main
 jobs:
+  prepare:
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    runs-on: ubuntu-latest
+    steps:
+     - id: matrix
+       run: |
+         echo "matrix=$(jq -rcM -n '.one="yes" | .two = "no" | .three = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" | {"include":[.]}')" >> $GITHUB_OUTPUT
   thing:
+    needs: prepare
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        include:
-        - one: 'yes'
-          two: 'no'
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     steps:
      - run: |
-         echo ${{ matrix.one }} ${{ matrix.two }}
+         echo ${{ fromJSON(toJSON(matrix)).one }} ${{ fromJSON(toJSON(matrix)).two }}
