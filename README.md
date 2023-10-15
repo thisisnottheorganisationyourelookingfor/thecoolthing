@@ -1,3 +1,3 @@
 # thecoolthing
 
-> it is
+> that's for sure
